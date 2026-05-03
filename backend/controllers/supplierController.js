@@ -22,9 +22,7 @@ exports.create = async (req, res, next) => {
     if (phone && !/^\+?[0-9\s\-()]{7,15}$/.test(phone)) {
       throw new AppError('Invalid phone number format', 400);
     }
-    const existing = await Supplier.findOne({ code: code.toUpperCase().trim() });
-    if (existing) throw new AppError(`Supplier code '${code}' already exists`, 400);
-
+    req.body.code = req.body.code || ('SUP-' + Date.now());
     const supplier = await Supplier.create(req.body);
     res.status(201).json({ success: true, data: supplier });
   } catch (err) { next(err); }

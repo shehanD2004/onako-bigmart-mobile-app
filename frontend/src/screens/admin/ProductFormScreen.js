@@ -22,7 +22,7 @@ import {
 import CustomButton from "../../components/CustomButton";
 import { COLORS, SPACING, RADIUS, SHADOWS, FONTS } from "../../styles/theme";
 
-const API_STORE_URL = "https://onako-bigmart-mobile-app-production.up.railway.app";
+const API_STORE_URL = "http://192.168.239.245:5000";
 
 export default function ProductFormScreen({ navigation, route }) {
   const { id } = route.params || {};
@@ -89,7 +89,7 @@ export default function ProductFormScreen({ navigation, route }) {
   };
 
   const handleSubmit = async () => {
-    if (!name || !price || !stock || !category) {
+    if (!name || !price || !stock) {
       return Alert.alert("Error", "Please fill all required fields.");
     }
 

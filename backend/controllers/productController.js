@@ -47,6 +47,12 @@ exports.getBySku = async (req, res, next) => {
 exports.create = async (req, res, next) => {
   try {
     req.body.createdBy = req.user._id;
+    req.body.sku = req.body.sku || ('SKU-' + Date.now());
+    req.body.pricePerUnit = req.body.pricePerUnit || req.body.price || 0;
+    req.body.sellingType = req.body.sellingType || req.body.sellType || 'pack';
+    if (req.files && req.files.length > 0) {
+      req.body.images = req.files.map(f => ({ url: '/uploads/' + f.filename }));
+    }
     const product = await Product.create(req.body);
     res.status(201).json({ success: true, data: product });
   } catch (err) { next(err); }
@@ -54,6 +60,14 @@ exports.create = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
+    req.body.pricePerUnit = req.body.pricePerUnit || req.body.price;
+    req.body.sellingType = req.body.sellingType || req.body.sellType;
+    if (req.files && req.files.length > 0) {
+      const newImages = req.files.map(f => ({ url: '/uploads/' + f.filename }));
+      let existing = [];
+      try { existing = JSON.parse(req.body.existingImages || '[]'); } catch(e){}
+      req.body.images = [...existing.map(u => ({url: u})), ...newImages];
+    }
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true, runValidators: true,
     });

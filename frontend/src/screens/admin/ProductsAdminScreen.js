@@ -18,7 +18,7 @@ import {
 } from "../../api/adminApi";
 import { COLORS, SPACING, RADIUS, SHADOWS, FONTS } from "../../styles/theme";
 
-const API_STORE_URL = "https://onako-bigmart-mobile-app-production.up.railway.app";
+const API_STORE_URL = "http://192.168.239.245:5000";
 
 export default function ProductsAdminScreen({ navigation }) {
   const [products, setProducts] = useState([]);

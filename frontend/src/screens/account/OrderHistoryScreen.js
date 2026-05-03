@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { getMyOrders } from "../../api/orderApi";
 import { COLORS, SPACING, RADIUS, SHADOWS, FONTS } from "../../styles/theme";
 
-const API_STORE_URL = "https://onako-bigmart-mobile-app-production.up.railway.app";
+const API_STORE_URL = "http://192.168.239.245:5000";
 
 export default function OrderHistoryScreen({ navigation }) {
   const [orders, setOrders] = useState([]);

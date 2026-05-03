@@ -12,8 +12,14 @@ exports.getAll = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 exports.getOne = getOne(Staff, 'user');
-exports.create = createOne(Staff);
 exports.update = updateOne(Staff);
+exports.create = async (req, res, next) => {
+  try {
+    req.body.employeeId = req.body.employeeId || ('EMP-' + Date.now());
+    const staff = await Staff.create(req.body);
+    res.status(201).json({ success: true, data: staff });
+  } catch (err) { next(err); }
+};
 exports.remove = async (req, res, next) => {
   try {
     await Staff.findByIdAndUpdate(req.params.id, { isActive: false });

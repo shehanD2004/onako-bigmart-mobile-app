@@ -25,7 +25,7 @@ exports.register = async (req, res, next) => {
       isVerified: false
     });
 
-    const verifyUrl = `https://onako-bigmart-mobile-app-production.up.railway.app/api/auth/verify-email/${verificationToken}`;
+    const verifyUrl = `http://192.168.239.245:5000/api/auth/verify-email/${verificationToken}`;
 
     const message = `
       <h1>Verify Your Email</h1>
