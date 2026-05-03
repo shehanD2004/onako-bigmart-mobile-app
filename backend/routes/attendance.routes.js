@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const c = require('../controllers/attendanceController');
+const { protect, authorize } = require('../middleware/auth');
+router.get('/', protect, c.getAll);
+router.get('/staff/:id', protect, c.getByStaff);
+router.get('/report', protect, authorize('admin'), c.getReport);
+router.get('/:id', protect, c.getOne);
+router.post('/', protect, authorize('admin'), c.create);
+router.put('/:id', protect, authorize('admin'), c.update);
+router.delete('/:id', protect, authorize('admin'), c.remove);
+module.exports = router;

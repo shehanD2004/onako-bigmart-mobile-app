@@ -1,6 +1,2 @@
-export const styles = {
-  container: {
-    flex: 1,
-    padding: 10,
-  },
-};
+// Re-export theme for backward compatibility
+export { COLORS, FONTS, SPACING, RADIUS, SHADOWS } from "./theme";
