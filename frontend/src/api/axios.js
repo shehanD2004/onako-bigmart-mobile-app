@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // Find it by running `ipconfig` in terminal (look for IPv4)
 // Both your phone and computer must be on the same WiFi
 // ──────────────────────────────────────────────────────────
-const BASE_URL = "http://192.168.239.245:5000/api";
+const BASE_URL = "https://onako-bigmart-mobile-app-production.up.railway.app/api";
 
 const API = axios.create({
   baseURL: BASE_URL,
