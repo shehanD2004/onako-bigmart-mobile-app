@@ -22,7 +22,7 @@ import {
 import CustomButton from "../../components/CustomButton";
 import { COLORS, SPACING, RADIUS, SHADOWS, FONTS } from "../../styles/theme";
 
-const API_STORE_URL = "http://192.168.239.245:5000";
+const API_STORE_URL = "https://onako-bigmart-mobile-app-production.up.railway.app";
 
 export default function ProductFormScreen({ navigation, route }) {
   const { id } = route.params || {};

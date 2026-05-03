@@ -4,7 +4,7 @@ import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 
-const API_STORE_URL = "http://192.168.239.245:5000";
+const API_STORE_URL = "https://onako-bigmart-mobile-app-production.up.railway.app";
 
 export default function ProfileScreen({ navigation }) {
     const { user, token, updateProfileContext, logout } = useContext(AuthContext);
