@@ -91,8 +91,8 @@ exports.create = async (req, res, next) => {
       });
     }
 
-    const tax = Math.round(subtotal * 0.08 * 100) / 100;
-    const shippingCost = subtotal > 50 ? 0 : 5.99; // Free shipping over $50
+    const tax = 0;
+    const shippingCost = subtotal > 5000 ? 0 : 250; // Free shipping over Rs 5000
     const total = subtotal + tax + shippingCost;
 
     const order = await Order.create({

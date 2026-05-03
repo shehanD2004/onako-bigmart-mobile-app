@@ -47,7 +47,7 @@ export default function CheckoutScreen({ navigation }) {
   const [payMethod, setPayMethod] = useState("cod");
   const [loading, setLoading] = useState(false);
 
-  const shippingCost = 300;
+  const shippingCost = cartTotalAmount > 5000 ? 0 : 250;
   const finalTotal = cartTotalAmount + shippingCost;
 
   // Protect against empty cart
