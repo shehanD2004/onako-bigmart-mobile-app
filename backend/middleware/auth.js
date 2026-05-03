@@ -11,7 +11,7 @@ const protect = async (req, res, next) => {
     if (!token) {
       throw new AppError('Not authorized, no token', 401);
     }
-    const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET || process.env.JWT_SECRET || 'nexastore_access_secret_key_2024');
     req.user = await User.findById(decoded.id).select('-password');
     if (!req.user) {
       throw new AppError('User not found', 401);
