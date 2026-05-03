@@ -12,9 +12,9 @@ exports.getOne = getOne(Supplier);
 // Create supplier with validation
 exports.create = async (req, res, next) => {
   try {
+    req.body.code = req.body.code || ('SUP-' + Date.now());
     const { name, email, code } = req.body;
     if (!name || !name.trim()) throw new AppError('Supplier name is required', 400);
-    if (!code || !code.trim()) throw new AppError('Supplier code is required', 400);
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw new AppError('Invalid email format', 400);
     }
