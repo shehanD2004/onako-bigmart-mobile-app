@@ -124,7 +124,7 @@ export default function FleetAdminScreen({ navigation }) {
         if (!validatePhone(staffPhone)) {
           return Alert.alert("Error", "Please enter a valid phone number.");
         }
-        const payload = { name: staffName, role: staffRole, phone: staffPhone, licenseNumber: staffLicense, isAvailable: true };
+        const payload = { name: staffName, role: staffRole.toLowerCase(), phone: staffPhone, licenseNumber: staffLicense, isAvailable: true };
         if (isEditing) await updateStaff(editingId, payload);
         else await createStaff(payload);
       }
